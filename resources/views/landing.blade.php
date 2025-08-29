@@ -18,9 +18,9 @@
       <ul>
         <li><a href="#">Beranda</a></li>
         <li><a href="#">Tentang Kami</a></li>
-        <li><a href="#">Gabung</a></li>
-        <li><a href="{{ route('login') }}">Masuk</a></li>
-        <li><a href="{{ route('register') }}">Daftar</a></li>
+        <li><a href={{ route('peternak.form') }}>Gabung</a></li>
+        <li><a href="{{ route('login.form') }}">Login</a></li>
+        <li><a href="{{ route('register.form') }}">Daftar</a></li>
 
       </ul>
     </nav>

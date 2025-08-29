@@ -13,6 +13,7 @@
             @csrf
             <h2>Register</h2>
 
+            {{-- Error Message --}}
             @if ($errors->any())
                 <div class="error-box">
                     {{ $errors->first() }}
@@ -40,15 +41,34 @@
             {{-- Password Confirmation --}}
             <div class="input-field">
                 <input type="password" name="password_confirmation" required autocomplete="new-password">
-                <label>Confirm Password</label>
+                <label>Konfirmasi Password</label>
             </div>
+
+            <div class="input-field">
+    <label for="role">Daftar Sebagai</label>
+    <div class="custom-select" id="role-select">
+        <input type="text" placeholder="Cari role..." id="role-search">
+        <ul id="role-options">
+            <li data-value="peternak">
+                <span class="icon purple"></span> Peternak 🐄
+            </li>
+            <li data-value="vendor">
+                <span class="icon yellow"></span> Vendor 🛒
+            </li>
+            <li data-value="admin">
+                <span class="icon red"></span> Admin ⚙️
+            </li>
+        </ul>
+    </div>
+    <input type="hidden" name="role" id="role-input" required>
+</div>
 
             {{-- Submit --}}
             <button type="submit">Sign Up</button>
 
             {{-- Login link --}}
             <p class="login-link">
-                Already have an account? 
+                Sudah punya akun?
                 <a href="{{ url('/login') }}">Login</a>
             </p>
         </form>

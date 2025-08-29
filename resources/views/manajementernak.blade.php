@@ -16,7 +16,7 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#">Dashboard</a></li>
+                <li><a href="{{ route('landing') }}">Dashboard</a></li>
                 <li><a href="#" class="active">Manajemen Ternak</a></li>
                 <li><a href="#">Tawaran</a></li>
                 <li><a href="#">Pesan</a></li>
