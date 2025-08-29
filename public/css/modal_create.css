@@ -1,0 +1,141 @@
+/* Modal Wrapper */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 9999; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.7); 
+}
+
+.modal-content {
+    background-image: url('../images/bg-popup.png'); /* cek path sesuai */
+    background-size: cover;
+    background-position: center;
+    margin: 5% auto; 
+    padding: 30px; 
+    border-radius: 12px;
+    width: 400px; 
+    min-height: 100px;
+    max-height: 80vh;   /* biar ga keluar layar */
+    overflow-y: auto;   /* kalau konten kepanjangan, bisa discroll */
+    color: #fff; 
+    text-align: center;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.4);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    /* === Custom Scrollbar === */
+    scrollbar-width: thin;               /* Firefox */
+    scrollbar-color: #7B4019; /* warna ungu lembut */
+}
+
+/* Chrome, Edge, Safari */
+.modal-content::-webkit-scrollbar {
+    width: 8px; /* tipis */
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background-color: #b197fc;
+    border-radius: 20px;
+    border: 2px solid transparent;
+}
+
+/* Form Actions (tombol bawah) */
+.form-actions {
+    margin-top: auto;   /* dorong ke bawah */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-top: 20px;  /* jarak biar ga nempel ke input */
+}
+
+
+/* Close Button */
+.close {
+    color: #fff; 
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 28px; 
+    font-weight: bold; 
+    cursor: pointer;
+}
+
+/* Title */
+.modal-content h2 {
+    margin-bottom: 25px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+}
+
+/* Input Styles */
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+}
+
+.form-group input::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+/* Buttons */
+.btn-submit {
+    background-color: #4b5320;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    background-color: #333;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background-color: #5c6629;
+}
+
+.btn-cancel:hover {
+    background-color: #444;
+}

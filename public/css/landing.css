@@ -1,0 +1,220 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Default font pake Open Sans */
+body {
+  background: #ffffff;
+  color: #333;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Kalau mau heading pakai Poppins (optional) */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #7B4019;
+  padding: 15px 8%;
+}
+
+.navbar .logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.navbar ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 8%;
+  background: #7B4019;
+  color: #fff;
+}
+
+.hero-text {
+  max-width: 50%;
+}
+
+.hero-text h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  margin-bottom: 30px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.hero-text .btn {
+  padding: 12px 30px;
+  border: none;
+  background: #7B4019;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.hero-text .btn:hover {
+  background: #C78A3B;
+}
+
+.hero-image img {
+  width: 400px;
+}
+
+/* Features Section */
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 50px 8%;
+  background: #fff;
+}
+
+.card {
+  flex: 1;
+  background: #C78A3B;
+  color: #fff;
+  text-align: center;
+  padding: 30px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card .icon {
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
+/* Section Title */
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+/* About Section */
+.about {
+  padding: 60px 8%;
+  background: #fff;
+}
+
+.about-row {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+}
+
+.about-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.about-text .italic {
+  font-style: italic;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.about-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.about-list li {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.about-img-box {
+  flex: 1;
+}
+
+.about-img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Video with play button */
+.about-video {
+  position: relative;
+}
+
+.about-video .play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  background: rgba(0, 131, 116, 0.9);
+  color: #fff;
+  border-radius: 50%;
+  padding: 15px 20px;
+  cursor: pointer;
+}
+
+.about-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+/* Saat terlihat */
+.about-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
