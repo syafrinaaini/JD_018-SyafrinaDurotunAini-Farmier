@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Farm;
 use App\Models\Livestock;
-use App\Models\Offer;
-use App\Models\Visit;
-use App\Models\Activity;
+//use App\Models\Tawaran;
+//use App\Models\Activity;
 use Illuminate\Support\Facades\Auth;
 
 class PeternakDashboardController extends Controller
@@ -14,25 +14,37 @@ class PeternakDashboardController extends Controller
     {
         $user = Auth::user();
 
+        // Ambil farm milik user (1 user 1 farm)
+        $farm = Farm::where('user_id', $user->id)->first();
+
         // Statistik
-        $jumlahTernak   = Livestock::where('user_id', $user->id)->count();
-        $jumlahTawaran  = Offer::whereHas('livestock', fn($q) => $q->where('user_id', $user->id))->count();
-        $ternakUnggulan = Livestock::where('user_id', $user->id)->orderBy('created_at', 'desc')->first();
+        $jumlahTernak = $farm?->livestocks()->count() ?? 0;
 
-        // Grafik kunjungan (7 hari terakhir)
-        $kunjungan = Visit::where('user_id', $user->id)
-            ->where('created_at', '>=', now()->subDays(7))
-            ->selectRaw('DATE(created_at) as tanggal, count(*) as total')
-            ->groupBy('tanggal')
-            ->pluck('total', 'tanggal');
+        // Tawaran (comment kalau belum ada tabel/model)
+        // $jumlahTawaran = Tawaran::where('farm_id', $farm?->id)->count();
+        $jumlahTawaran = 0; // default sementara
 
-        // Aktivitas terbaru
-        $activities = Activity::where('user_id', $user->id)
-            ->latest()
-            ->take(5)
-            ->get();
+        $ternakUnggulan = $farm?->livestocks()->orderBy('stok', 'desc')->first();
 
-        return view('peternak.dashboard', compact(
+        // Dummy data grafik kunjungan
+        $kunjungan = collect([
+            now()->subDays(6)->format('d M') => 5,
+            now()->subDays(5)->format('d M') => 8,
+            now()->subDays(4)->format('d M') => 4,
+            now()->subDays(3)->format('d M') => 12,
+            now()->subDays(2)->format('d M') => 7,
+            now()->subDay()->format('d M')  => 10,
+            now()->format('d M')            => 6,
+        ]);
+
+        // Aktivitas terbaru (comment kalau belum ada tabel/model)
+        // $activities = Activity::where('farm_id', $farm?->id)
+        //     ->latest()
+        //     ->take(5)
+        //     ->get();
+        $activities = collect(); // default sementara
+
+        return view('peternakpage.dashboard', compact(
             'jumlahTernak',
             'jumlahTawaran',
             'ternakUnggulan',

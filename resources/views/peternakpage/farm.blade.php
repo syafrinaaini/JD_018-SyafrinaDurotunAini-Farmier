@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Form Pendaftaran Peternakan</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ asset('css/peternak.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/farm.css') }}">
 </head>
 <body>
     <div class="wrap">

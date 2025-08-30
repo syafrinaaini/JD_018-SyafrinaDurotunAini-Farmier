@@ -11,7 +11,7 @@ class LivestockController extends Controller
     public function index()
     {
         $livestocks = Livestock::all();
-        return view('manajementernak', compact('livestocks'));
+        return view('peternakpage.manajementernak', compact('livestocks'));
     }
 
     public function create()

@@ -13,11 +13,11 @@
     {{-- Sidebar --}}
     <aside class="sidebar">
         <div class="logo">
-            <img src="{{ asset('images/logo.png') }}" alt="Logo">
+            <img src="{{ asset('images/logo-farmier.png') }}" alt="Logo">
         </div>
         <ul class="menu">
             <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Manajemen Ternak</a></li>
+            <li><a href="{{ route('livestocks.index') }}">Manajemen Ternak</a></li>
             <li><a href="#">Tawaran</a></li>
             <li><a href="#">Pesan</a></li>
             <li><a href="#">Pengaturan</a></li>
@@ -26,11 +26,20 @@
 
     {{-- Konten --}}
     <main class="content">
-        <h1>Selamat Datang Kembali, Genjah Arum Farm!</h1>
-        <p class="subtitle">
-            Setiap langkah yang kamu ambil hari ini adalah bagian dari perjalanan menuju peternakan
-            yang lebih maju, produktif, dan berkelanjutan.
-        </p>
+
+        {{-- Welcome --}}
+        <div class="welcome">
+            <div class="welcome-left">
+                <img src="{{ asset('images/peternak-db.png') }}" alt="Ilustrasi" />
+            </div>
+            <div class="welcome-right">
+                <h1>Selamat Datang Kembali, Genjah Arum Farm!</h1>
+                <p class="subtitle">
+                    Setiap langkah yang kamu ambil hari ini adalah bagian dari perjalanan menuju peternakan
+                    yang lebih maju, produktif, dan berkelanjutan.
+                </p>
+            </div>
+        </div>
 
         {{-- Statistik --}}
         <div class="statistik">
@@ -50,8 +59,15 @@
 
         {{-- Quick Action --}}
         <div class="quick-action">
-            <a href="{{ route('lapak.form') }}" class="btn btn-primary">+ Buat Lapak</a>
-            <a href="{{ route('livestock.create') }}" class="btn btn-success">+ Tambah Ternak</a>
+            <div class="quick-action">
+                <a href="{{ route('farms.index') }}" class="btn btn-primary">+ Buat Lapak</a>
+            </div>
+
+            @if(Route::has('livestock.create'))
+                <a href="{{ route('livestock.create') }}" class="btn btn-success">+ Tambah Ternak</a>
+            @else
+                <a href="#" class="btn btn-success disabled">+ Tambah Ternak</a>
+            @endif
         </div>
 
         {{-- Grafik --}}

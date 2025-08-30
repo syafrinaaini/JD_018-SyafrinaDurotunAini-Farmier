@@ -5,17 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Peternak extends Model
+class Farm extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nama_peternak',
-        'nama_peternakan',
-        'email',
-        'nomor_hp',
-        'alamat',
-        'keterangan',
+        'user_id',
+        'name',
+        'location',
     ];
-}
 
+   
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+}

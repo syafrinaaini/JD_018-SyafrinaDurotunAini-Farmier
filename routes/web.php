@@ -4,9 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LivestockController;
-use App\Http\Controllers\PeternakController;
-use App\Http\Controllers\AdminDashboardController;
-use App\Http\Controllers\VendorDashboardController;
+use App\Http\Controllers\FarmsController;
 use App\Http\Controllers\PeternakDashboardController;
 
 // Landing Page
@@ -20,20 +18,29 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register.form');
 Route::post('/register', [AuthController::class, 'register'])->name('register.submit');
 
-Route::middleware(['role:admin'])->group(function () {
-    Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
-});
-
-Route::middleware(['role:peternak'])->group(function () {
+// Farm / Peternakan Routes
+Route::middleware(['auth'])->group(function () {
+    // Dashboard peternak (optional)
     Route::get('/peternak/dashboard', [PeternakDashboardController::class, 'index'])->name('peternak.dashboard');
+
+    // Tampilkan daftar farm user
+    Route::get('/farms', [FarmsController::class, 'index'])->name('farms.index');
+
+    // Form tambah farm
+    Route::get('/peternakan', [FarmsController::class, 'create'])->name('peternak.form');
+
+    // Simpan farm baru
+    Route::post('/peternakan', [FarmsController::class, 'store'])->name('peternak.simpan');
+
+    // Form edit farm
+    Route::get('/farms/{farm}/edit', [FarmsController::class, 'edit'])->name('farms.edit');
+
+    // Update farm
+    Route::put('/farms/{farm}', [FarmsController::class, 'update'])->name('farms.update');
+
+    // Hapus farm
+    Route::delete('/farms/{farm}', [FarmsController::class, 'destroy'])->name('farms.destroy');
 });
 
-Route::middleware(['role:vendor'])->group(function () {
-    Route::get('/vendor/dashboard', [VendorDashboardController::class, 'index'])->name('vendor.dashboard');
-});
-
+// Resource routes untuk Livestock
 Route::resource('livestocks', LivestockController::class);
-Route::get('/peternak/gabung', [PeternakController::class, 'formGabung'])->name('peternak.form');
-Route::post('/peternak/gabung', [PeternakController::class, 'simpan'])->name('peternak.simpan');
-Route::middleware(['role:peternak'])->group(function () {
-Route::get('/peternak/dashboard', [PeternakDashboardController::class, 'index'])->name('peternak.dashboard');});
