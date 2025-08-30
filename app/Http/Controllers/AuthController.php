@@ -9,47 +9,62 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
+    /**
+     * Tampilkan halaman register
+     */
     public function showRegister()
-{
-    return view('authentication.register');
-}
+    {
+        return view('authentication.register');
+    }
 
-    // Form register
-    public function Register(Request $request)
+    public function register(Request $request)
 {
     $request->validate([
         'phone' => 'required|unique:users,phone',
         'email' => 'required|email|unique:users,email',
         'password' => 'required|confirmed|min:6',
+        'role' => 'required|in:peternak,vendor' // admin TIDAK boleh
     ]);
 
-    $user = User::create([
+    User::create([
         'phone' => $request->phone,
         'email' => $request->email,
         'password' => Hash::make($request->password),
+        'role' => $request->role,
     ]);
 
     return redirect('/login')->with('success', 'User berhasil terdaftar!');
 }
 
-
-    // Form login
+    /**Tampilkan form login**/
     public function showLogin()
     {
         return view('authentication.login');
     }
 
-    // Proses login
+    /**Proses login**/
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email' => ['required', 'email'],
+            'email'    => ['required', 'email'],
             'password' => ['required'],
         ]);
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+
+            $user = Auth::user();
+
+            if ($user->role === 'admin') {
+                return redirect()->route('admin.dashboard');
+            } elseif ($user->role === 'vendor') {
+                return redirect()->route('vendor.dashboard');
+            } elseif ($user->role === 'peternak') {
+                return redirect()->route('peternak.dashboard');
+            }
+
+            // fallback kalau role tidak dikenali
+            return redirect()->route('landing');
         }
 
         return back()->withErrors([
@@ -57,7 +72,7 @@ class AuthController extends Controller
         ])->onlyInput('email');
     }
 
-    // Logout
+    /**Logout**/
     public function logout(Request $request)
     {
         Auth::logout();
