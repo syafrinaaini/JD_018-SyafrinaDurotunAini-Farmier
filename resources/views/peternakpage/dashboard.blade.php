@@ -62,12 +62,6 @@
             <div class="quick-action">
                 <a href="{{ route('farms.index') }}" class="btn btn-primary">+ Buat Lapak</a>
             </div>
-
-            @if(Route::has('livestock.create'))
-                <a href="{{ route('livestock.create') }}" class="btn btn-success">+ Tambah Ternak</a>
-            @else
-                <a href="#" class="btn btn-success disabled">+ Tambah Ternak</a>
-            @endif
         </div>
 
         {{-- Grafik --}}

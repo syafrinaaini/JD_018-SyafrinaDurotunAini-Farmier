@@ -51,13 +51,13 @@
 
         <ul id="role-options" class="hidden">
             <li data-value="peternak">
-                <span class="icon purple"></span> Peternak 🐄
+                <span class="icon purple"></span> Peternak 
             </li>
             <li data-value="vendor">
-                <span class="icon yellow"></span> Vendor 🛒
+                <span class="icon yellow"></span> Vendor 
             </li>
             <li data-value="admin">
-                <span class="icon red"></span> Admin ⚙️
+                <span class="icon red"></span> Admin 
             </li>
         </ul>
     </div>

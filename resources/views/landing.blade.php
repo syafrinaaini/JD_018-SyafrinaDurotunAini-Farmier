@@ -29,7 +29,7 @@
   <section class="hero">
     <div class="hero-text">
       <h1>Welcome to Farmier</h1>
-      <p>Farmier – Bersama Peternak Lokal, Membangun Kemitraan dan Memperbesar Peluang Pasar..</p>
+      <p>Farmier – Bersama Peternak Lokal, Membangun Kemitraan dan Memperbesar Peluang Pasar</p>
       <button class="btn">mulai sekarang</button>
     </div>
     <div class="hero-image">
