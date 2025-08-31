@@ -7,7 +7,25 @@
     <link rel="stylesheet" href="{{ asset('css/farm.css') }}">
 </head>
 <body>
-    <div class="wrap">
+<div class="layout">
+    {{-- Sidebar --}}
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="{{ asset('images/logo-farmier.png') }}" alt="Logo Farmier">
+        </div>
+        <nav>
+            <ul class="menu">
+                <li><a href="{{ route('peternak.dashboard') }}">Dashboard</a></li>
+                <li><a href="{{ route('livestocks.index') }}">Manajemen Ternak</a></li>
+                <li><a href="#">Tawaran</a></li>
+                <li><a href="#">Pesan</a></li>
+                <li><a href="#">Pengaturan</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    {{-- Konten utama --}}
+    <main class="content">
         <h1>Form Pendaftaran Peternakan</h1>
 
         @if(session('success'))
@@ -25,39 +43,37 @@
             </div>
         @endif
 
-        <form action="{{ route('peternak.simpan') }}" method="POST" class="form">
+        <form action="{{ route('peternak.simpan') }}" method="POST" class="form" enctype="multipart/form-data">
             @csrf
 
+            {{-- name --}}
             <div class="form-group">
-                <label for="nama_peternak">Nama Peternak (Pemilik) <span class="req">*</span></label>
-                <input type="text" id="nama_peternak" name="nama_peternak" value="{{ old('nama_peternak') }}" required>
+                <label for="name">Nama Peternakan <span class="req">*</span></label>
+                <input type="text" id="name" name="name" value="{{ old('name') }}" required>
             </div>
 
+            {{-- location --}}
             <div class="form-group">
-                <label for="nama_peternakan">Nama Peternakan <span class="req">*</span></label>
-                <input type="text" id="nama_peternakan" name="nama_peternakan" value="{{ old('nama_peternakan') }}" required>
+                <label for="location">Alamat / Lokasi <span class="req">*</span></label>
+                <textarea id="location" name="location" rows="3" required>{{ old('location') }}</textarea>
             </div>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="email">Email (Opsional)</label>
-                    <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="contoh@mail.com">
-                </div>
-
-                <div class="form-group">
-                    <label for="nomor_hp">Nomor HP</label>
-                    <input type="text" id="nomor_hp" name="nomor_hp" value="{{ old('nomor_hp') }}" placeholder="08xxxx">
-                </div>
+            {{-- description --}}
+            <div class="form-group">
+                <label for="description">Deskripsi</label>
+                <textarea id="description" name="description" rows="3" placeholder="Deskripsikan peternakanmu disini.">{{ old('description') }}</textarea>
             </div>
 
+            {{-- website --}}
             <div class="form-group">
-                <label for="alamat">Alamat Peternakan <span class="req">*</span></label>
-                <textarea id="alamat" name="alamat" rows="3" required>{{ old('alamat') }}</textarea>
+                <label for="website">Sosial Media (Opsional)</label>
+                <input type="url" id="website" name="website" value="{{ old('website') }}" placeholder="instagram: genjaharum_">
             </div>
 
+            {{-- photo --}}
             <div class="form-group">
-                <label for="keterangan">Keterangan Tambahan</label>
-                <textarea id="keterangan" name="keterangan" rows="3" placeholder="Jenis ternak, kapasitas kandang, dll.">{{ old('keterangan') }}</textarea>
+                <label for="photo">Foto Peternakan</label>
+                <input type="file" id="photo" name="photo" accept="image/*">
             </div>
 
             <div class="actions">
@@ -67,6 +83,7 @@
         </form>
 
         <p class="note"><span class="req">*</span> Wajib diisi.</p>
-    </div>
+    </main>
+</div>
 </body>
 </html>

@@ -16,7 +16,7 @@
             <img src="{{ asset('images/logo-farmier.png') }}" alt="Logo">
         </div>
         <ul class="menu">
-            <li><a href="#">Dashboard</a></li>
+            <li><a href="{{ route('peternak.dashboard') }}">Dashboard</a></li>
             <li><a href="{{ route('livestocks.index') }}">Manajemen Ternak</a></li>
             <li><a href="#">Tawaran</a></li>
             <li><a href="#">Pesan</a></li>

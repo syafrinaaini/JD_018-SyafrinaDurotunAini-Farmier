@@ -1,21 +1,21 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Farm;
+use Illuminate\Support\Facades\Auth;
 
 class VendorDashboardController extends Controller
 {
-    //halaman dashboard vendor
     public function index()
     {
-        //data dummy
-        $data = [
-            ['nama' => 'Kambing Farm', 'lokasi' => 'Lemahbang', 'Jumlah_Domba' => 30],
-            ['nama' => 'Kemiren Farm', 'lokasi' => 'Kemiren', 'Jumlah_Domba' => 20],
-            ['nama' => 'GlagahArum Farm', 'lokasi' => 'Glagah', 'Jumlah_Domba' => 100],
-        ];
         
-        return view('vendordashboard', compact('data'));
+        $userId = Auth::id();
+
+        
+        $farms = Farm::with('livestocks')->get();
+
+
+        return view('vendor.dashboard', compact('farms'));
     }
 }

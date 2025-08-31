@@ -13,11 +13,18 @@ class Farm extends Model
         'user_id',
         'name',
         'location',
+        'description',
+        'livestock_type',
+        'photo',
+        'website',
     ];
-
-   
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function livestocks()
+    {
+        return $this->hasMany(Livestock::class, 'farm_id', 'id');
     }
 }

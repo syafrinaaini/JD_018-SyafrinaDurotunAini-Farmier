@@ -17,7 +17,7 @@ body {
 .sidebar {
     width: 250px;
     min-height: 100vh;
-    background: url('../images/sidebar-bg.png') no-repeat center center; /* gambar background */
+    background: url('../images/sidebar-bg.png') no-repeat center center; 
     background-size: cover;
     padding: 20px;
     color: #7B4019 ;

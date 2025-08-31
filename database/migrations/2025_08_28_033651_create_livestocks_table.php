@@ -9,10 +9,11 @@ return new class extends Migration {
     {
         Schema::create('livestocks', function (Blueprint $table) {
             $table->id();
-            $table->string('jenis');              // contoh: Kambing, Sapi, Domba
-            $table->string('ras');                // contoh: Etawa, PO, Texel
+            $table->foreignId('farm_id')->constrained('farms')->onDelete('cascade'); 
+            $table->string('jenis');
+            $table->string('ras');
             $table->unsignedInteger('stok')->default(0);
-            $table->string('image_path')->nullable(); // simpan path gambar
+            $table->string('image_path')->nullable();
             $table->timestamps();
         });
     }

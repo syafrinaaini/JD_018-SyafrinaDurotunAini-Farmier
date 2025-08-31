@@ -19,19 +19,17 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Poppins', sans-serif;
 }
 
-/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #7B4019;
+  background: linear-gradient(
+    135deg, 
+    #FFFFFF 40%, 
+    #F9F4EF 75%,  
+    #D7BFAE 100%,  
+  );
   padding: 15px 8%;
-}
-
-.navbar .logo {
-  font-size: 22px;
-  font-weight: bold;
-  color: #fff;
 }
 
 .navbar ul {
@@ -41,7 +39,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar ul li a {
-  color: #fff;
+  color: #3E2723;
   text-decoration: none;
   font-weight: 500;
 }
@@ -50,22 +48,39 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: underline;
 }
 
-/* Hero Section */
 .hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 60px 8%;
-  background: #7B4019;
-  color: #fff;
+  background: linear-gradient(
+    135deg, 
+    #FFFFFF 0%, 
+    #F9F4EF 40%,  
+    #D7BFAE 75%,  
+    #8D6E63 100%  
+  );
 }
-
+.hero-text h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(
+    90deg, 
+    #5D4037,   /* coklat tua */
+    #8D6E63,   /* coklat medium */
+    #D7BFAE    /* coklat soft krem */
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
 .hero-text {
   max-width: 50%;
 }
 
 .hero-text h1 {
-  font-size: 40px;
+  font-size: 60px;
   margin-bottom: 20px;
 }
 
@@ -78,7 +93,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero-text .btn {
   padding: 12px 30px;
   border: none;
-  background: #7B4019;
+  background: #A1887F;
   color: #fff;
   font-size: 16px;
   border-radius: 30px;
@@ -86,14 +101,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-text .btn:hover {
-  background: #C78A3B;
+  background: #6D4C41;
 }
 
 .hero-image img {
   width: 400px;
 }
 
-/* Features Section */
 .features {
   display: flex;
   justify-content: center;
@@ -104,20 +118,21 @@ h1, h2, h3, h4, h5, h6 {
 
 .card {
   flex: 1;
-  background: #C78A3B;
-  color: #fff;
+  background: #F3E5D8; 
+  color: #333; 
   text-align: center;
   padding: 30px 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.card .icon {
-  font-size: 30px;
-  margin-bottom: 15px;
+.card:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
 
-/* Section Title */
+
 .section-title {
   text-align: center;
   font-size: 32px;
