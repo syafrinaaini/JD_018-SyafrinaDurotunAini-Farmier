@@ -19,7 +19,7 @@
         <li><a href="#">Beranda</a></li>
         <li><a href="#about">Tentang Kami</a></li>
         <li><a href="{{ route('login.form') }}">Login</a></li>
-        <li><a href="{{ route('register.form') }}">Daftar</a></li>
+        <li><a href="{{ route('register.form') }}">Register</a></li>
 
       </ul>
     </nav>
